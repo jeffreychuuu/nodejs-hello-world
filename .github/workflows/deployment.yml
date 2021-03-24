@@ -43,15 +43,15 @@ jobs:
       - name: Set Web App WEBSITE PORT exposure
         uses: Azure/appservice-settings@v1
         with:
-        app-name: nodejs-helloworld-nexplore
-        app-settings-json: |
-          [
-              {
-                  "name": "WEBSITES_PORT",
-                  "value": "3000",
-                  "slotSetting": false
-              }
-          ]
+          app-name: nodejs-helloworld-nexplore
+          app-settings-json: |
+            [
+                {
+                    "name": "WEBSITES_PORT",
+                    "value": "3000",
+                    "slotSetting": false
+                }
+            ]
       - name: Sign out of Azure
         run: |
           az logout
