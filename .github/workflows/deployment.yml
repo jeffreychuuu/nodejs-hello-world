@@ -12,7 +12,7 @@ jobs:
       - name: Login to ACR
         uses: docker/login-action@v1
         with:
-          registry: nexploretestdeploy.azurecr.io.azurecr.io
+          registry: nexploretestdeploy.azurecr.io
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
       # - name: Build and push to ${{ github.event.pull_request.head.sha }}
