@@ -43,4 +43,4 @@ jobs:
           images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
       - name: Sign out of Azure
           run: |
-          az logout
+            az logout
