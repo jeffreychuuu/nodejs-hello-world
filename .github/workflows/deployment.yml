@@ -33,14 +33,14 @@ jobs:
         run: echo ${{ steps.docker_build_version_tag.outputs.digest }}
       - name: Sign in to Azure 
       - uses: azure/login@v1
-          with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          with: 
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy to Azure Web App
       - uses: azure/webapps-deploy@v2
           with:
-          app-name: nodejs-helloworld
-          slot-name: dev
-          images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
+            app-name: nodejs-helloworld
+            slot-name: dev
+            images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
       - name: Sign out of Azure
           run: |
           az logout
