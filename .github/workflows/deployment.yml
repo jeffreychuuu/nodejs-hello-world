@@ -39,7 +39,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: nodejs-helloworld-nexplore
-          slot-name: dev
           images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
       - name: Sign out of Azure
         run: |
