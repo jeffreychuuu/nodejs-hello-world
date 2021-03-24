@@ -27,5 +27,7 @@ jobs:
         with:
           push: true
           tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
+      - name: Log git commit hash
+        run: echo ${{ github.event.pull_request.head.sha }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
