@@ -15,12 +15,12 @@ jobs:
           registry: nexploretestdeploy.azurecr.io.azurecr.io
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
-      - name: Build and push to ${{ github.event.pull_request.head.sha }}
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ github.event.pull_request.head.sha }}
+      # - name: Build and push to ${{ github.event.pull_request.head.sha }}
+      #   id: docker_build
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     push: true
+      #     tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ github.event.pull_request.head.sha }}
       - name: Build and push to ${{ secrets.VERSION_TAG }}
         id: docker_build
         uses: docker/build-push-action@v2
