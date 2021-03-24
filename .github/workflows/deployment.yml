@@ -40,6 +40,14 @@ jobs:
         with:
           app-name: nodejs-helloworld-nexplore
           images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
+          app-settings-json: |
+            [
+                {
+                    "name": "WEBSITES_PORT",
+                    "value": 3000,
+                    "slotSetting": false
+                }
+            ]
       - name: Sign out of Azure
         run: |
           az logout
