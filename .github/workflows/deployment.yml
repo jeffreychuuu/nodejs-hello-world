@@ -37,10 +37,10 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
-          with:
-            app-name: nodejs-helloworld
-            slot-name: dev
-            images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
+        with:
+          app-name: nodejs-helloworld
+          slot-name: dev
+          images: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
       - name: Sign out of Azure
           run: |
           az logout
