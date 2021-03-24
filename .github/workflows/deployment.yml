@@ -15,19 +15,18 @@ jobs:
           registry: nexploretestdeploy.azurecr.io
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
-      # - name: Build and push to ${{ github.event.pull_request.head.sha }}
-      #   id: docker_build
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     push: true
-      #     tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ github.event.pull_request.head.sha }}
+      - name: Build and push to ${{ github.sha }}
+        id: docker_build_github_sha
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ github.sha }}
       - name: Build and push to ${{ secrets.VERSION_TAG }}
-        id: docker_build
+        id: docker_build_version_tag
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: nexploretestdeploy.azurecr.io/nodejs-helloworld:${{ secrets.VERSION_TAG }}
-      - name: Log git commit hash
-        run: echo ${{ github.sha }}
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.docker_build_github_sha.outputs.digest }}
+        run: echo ${{ steps.docker_build_version_tag.outputs.digest }}
